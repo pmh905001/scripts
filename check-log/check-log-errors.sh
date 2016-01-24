@@ -50,3 +50,4 @@ do
 			exit					
 	fi
 done
+echo test
