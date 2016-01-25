@@ -35,7 +35,6 @@ fi
 
 #filePath=iui-003-fail.log
 filePath=$1
-echo $1
 for ((i=0;i<${#keyArr[@]};i++))
 do
 	#echo ${keyArr[$i]},$filePath
@@ -50,4 +49,3 @@ do
 			exit					
 	fi
 done
-echo test
