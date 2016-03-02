@@ -5,6 +5,13 @@
 #Usage: config-detsim.sh detectorIP broadcastIP
 #For example : config-detsim.sh 3.136.143.68 3.136.143.255
 
+if [ $# != 2 ]
+	then
+		echo -e "\e[1;31m Need 2 parameters \e[0m"
+		echo Usage:
+		echo $0 \<detectorIP\> \<broadcastIP\>
+		exit 1
+fi	
 
 #path1="ConnectionPoint.cfg"
 #path2="XRImDet.dyn"
@@ -39,6 +46,9 @@ if [ $existStr == 1 ]
 		echo $path1 : $num
 		#sed -n "${num}s/BroadcastAddress.*/BroadcastAddress = \"$2\";/pg" $path1
 		sed -i "${num}s/BroadcastAddress.*/BroadcastAddress = \"$2\";/g" $path1
+		dos2unix $path1
+	else
+		echo -e "\e[1;31m Not exist key word in $path1 \e[0m"
 		
 fi
 
@@ -52,6 +62,8 @@ if [ $existStr == 1 ]
 		echo $path2 : $num
 		#sed -n "${num}s/DetectorConnectionStrategy.Val = 1/DetectorConnectionStrategy.Val = 0/pg" $path2
 		sed -i "${num}s/DetectorConnectionStrategy.Val = 1/DetectorConnectionStrategy.Val = 0/g" $path2
+	else
+	        echo -e "\e[1;31m Not exist key word in $path2 \e[0m"
 fi
 
 
@@ -61,6 +73,8 @@ if [ $existStr == 0 ]
 		echo "$path3 : "
 		#sed -n "$ a sudo /magichome/xruser/detsim/bin/tablesim_iDR.sh" $path3
 		sed -i "$ a sudo /magichome/xruser/detsim/bin/tablesim_iDR.sh" $path3
+	else
+	        echo -e "\e[1;31m Already exist key word in $path3 \e[0m"
 fi
 
 
@@ -70,6 +84,8 @@ if [ $existStr == 0 ]
 		echo "$path4 : "
 		#sed -n "$ a sudo /magichome/xruser/detsim/bin/kildetsim.sh" $path4
 		sed -i "$ a sudo /magichome/xruser/detsim/bin/kildetsim.sh" $path4
+	else
+	        echo -e "\e[1;31m already exist key word in $path4 \e[0m"
 fi
 
 #256f0612
@@ -78,6 +94,8 @@ if [ $existStr == 0 ]
 	then
 		echo "$path5 : "
 		sed -i "1 c 256f0612" $path5
+	else
+	        echo -e "\e[1;31m Already existed key word in $path5 \e[0m"
 fi
 
 
