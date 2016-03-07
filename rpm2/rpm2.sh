@@ -142,3 +142,38 @@ do
         fi
 
 done
+
+
+rpm -qa | grep iui_
+rpm -qa | grep dm_
+rpm -qa | grep cse_
+
+
+
+
+cd $1
+existCSEFile=`ls -l *cse*.rpm | wc -l`
+	if [[ $existCSEFile == 1 ]]
+		read -p "do you want to reboot system?(y/n)" wantToReboot
+		if [[ $wantToReboot == y ]]
+			then
+				reboot
+		fi
+	fi
+
+
+
+
+
+
+
+cd $1
+existCSEFile=`ls -l *cse*.rpm | wc -l`
+if [[ $existCSEFile == 1 ]]
+	then
+        	read -p "do you want to reboot system?(y/n) : " wantToReboot
+	        if [[ $wantToReboot == y ]]
+		        then
+                        	reboot
+                        fi
+fi
