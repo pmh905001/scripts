@@ -1,5 +1,12 @@
 #! /bin/bash
 
+if [[ $# == 0 ]]
+        then
+	        echo "Should input the absolutely path as the first parameter"
+		echo "Uage $0 absolutelyPath"
+	        exit 1
+fi
+
 kilall
 
 # un-intall i18n
@@ -151,23 +158,6 @@ rpm -qa | grep cse_
 
 
 
-cd $1
-existCSEFile=`ls -l *cse*.rpm | wc -l`
-	if [[ $existCSEFile == 1 ]]
-		read -p "do you want to reboot system?(y/n)" wantToReboot
-		if [[ $wantToReboot == y ]]
-			then
-				reboot
-		fi
-	fi
-
-
-
-
-
-
-
-cd $1
 existCSEFile=`ls -l *cse*.rpm | wc -l`
 if [[ $existCSEFile == 1 ]]
 	then
