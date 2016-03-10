@@ -10,75 +10,67 @@ fi
 kilall
 
 # un-intall i18n
-rpm -qa | grep iui_ | while read line
-do
-	if [[ $line == *error* ]]
+installedRpm=`rpm -qa | grep iui_idr_errorinhibit.* -c `
+	if [[ $installedRpm == 1 ]]
 		then
 			cd $1
 			existI18n=`ls -l *error* | wc -l`
 			if [ $existI18n == 1 ]
 				then 
-					echo "rpm -e ${line}"
-					#rpm -e ${line}
+					echo "rpm -e `rpm -qa | grep iui_idr_errorinhibit.*`"
+					rpm -e `rpm -qa | grep iui_idr_errorinhibit.*`
 				else
 					echo "Not exist i18n rpm"
 			fi
 	fi
-done
 
 
 # un-install iui
-rpm -qa | grep iui_ | while read line
-do
-	if [[ $line != *error* && $line != *protocoldb* ]]
+installedRpm=`rpm -qa | grep iui_iDR | grep -vc protocoldb`
+	if [[ $installedRpm == 1 ]]
 		then
 			cd $1
                         existIUI=`ls -l *iui_iDR* | wc -l`
                         if [ $existIUI == 1 ]
                                 then
-					echo "rpm -e ${line}"
-                        		rpm -e ${line}
+					echo "rpm -e `rpm -qa | grep iui_iDR | grep -v protocoldb`"
+                        		rpm -e `rpm -qa | grep iui_iDR | grep -v protocoldb`
                                 else
                                         echo "Not exist iui rpm"
                         fi
         fi
-done
 
 
 # un-intall dm
-rpm -qa | grep dm_ | while read line
-do
-        if [[ $line == *dm* ]]
+installedRpm=$(rpm -qa | grep dm_ -c)
+        if [[ $installedRpm == 1 ]]
                 then
 			cd $1
                         existDM=`ls -l *dm* | wc -l`
                         if [ $existDM == 1 ]
                                 then
-					 echo "rpm -e ${line}"
-                       			 rpm -e ${line}
+					 echo "rpm -e $(rpm -qa | grep dm_)"
+                       			 rpm -e $(rpm -qa | grep dm_)
                                 else
                                         echo "Not exist dm rpm"
                         fi
         fi
-done
 
 
 # un-intall cse
-rpm -qa | grep cse_ | while read line
-do
-        if [[ $line == *cse_* ]]
+installedRpm=$(rpm -qa | grep cse_ -c)
+        if [[ $installedRpm == 1 ]]
                 then
 			cd $1
                         existCSE=`ls -l *cse* | wc -l`
                         if [ $existCSE == 1 ]
                                 then
-                                         echo "rpm -e ${line}"
-                                         rpm -e ${line}
+                                         echo "rpm -e $(rpm -qa | grep cse_)"
+                                         rpm -e $(rpm -qa | grep cse_)
                                 else
                                         echo "Not exist cse rpm"
                         fi			
         fi
-done
 
 
 
