@@ -148,7 +148,7 @@ rpm -qa | grep dm_
 rpm -qa | grep cse_
 
 
-
+echo "Don't forgot to clear the cache of chromium browser!"
 
 existCSEFile=`ls -l *cse*.rpm | wc -l`
 if [[ $existCSEFile == 1 ]]
