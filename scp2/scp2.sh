@@ -9,4 +9,4 @@ month=`date --date="+5 hour" +%m`
 today=`date --date="+5 hour" +%d`
 
 
-scp -r $1 root@3.136.143.14:/database/pmh/daily/$year/$month/$today/
+scp -r "$1" root@3.136.143.14:/database/pmh/daily/$year/$month/$today/
