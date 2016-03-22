@@ -5,4 +5,8 @@
 
 
 currentShellPath=$(cd `dirname $0`; pwd)
+parentDir=$(dirname $currentShellPath)
+
+$parentDir/daily/14-no-password.sh
+
 $currentShellPath/no-password.sh $1 $currentShellPath
