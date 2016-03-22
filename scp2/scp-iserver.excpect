@@ -1,0 +1,18 @@
+#!/usr/bin/expect  -f
+#!/c/daily-tasks/software/cygwin/bin/expect
+
+#Using expect script to upload file without inputing password .
+#Usage: $0 <fileToUpload> <IP>
+
+set fileToUpload [lindex $argv 0]
+set ip [lindex $argv 1]
+
+spawn scp -r $fileToUpload root@$ip:/root/Downloads/ 
+expect "password:"
+
+send "#superxr\r"
+
+expect eof
+#exit
+#sleep 10
+#interact
