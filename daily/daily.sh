@@ -1,6 +1,7 @@
 #! /bin/bash
 
 #test001
+#test002
 year=`date --date="+6 hour" +%Y`
 month=`date --date="+6 hour" +%m`
 today=`date --date="+6 hour" +%d`
